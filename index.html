@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orçamento por PF</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Roboto:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="app-header">
+        <h1>Mickeias Charles</h1>
+        <p class="subtitle">Software Developer</p>
+        <h2 class="tool-title">
+          /> Calculadora de Orçamento por Pontos de Funções
+        </h2>
+      </header>
+
+      <div class="content-grid">
+        <section class="tech-section">
+          <div class="project-metadata">
+            <div class="comment-block">// Definição do Projeto</div>
+            <div class="input-row full-width">
+              <div class="code-input-group wide">
+                <label>Nome do Projeto =</label>
+                <input
+                  type="text"
+                  id="nomeProjeto"
+                  placeholder='"Digite o nome aqui"'
+                />;
+              </div>
+            </div>
+            <div class="input-row full-width">
+              <div class="code-input-group wide">
+                <label>Nome do Cliente =</label>
+                <input
+                  type="text"
+                  id="nomeCliente"
+                  placeholder='"Digite o nome aqui"'
+                />;
+              </div>
+            </div>
+          </div>
+
+          <div class="config-box">
+            <div class="comment-block">// Configurações Financeiras</div>
+            <div class="input-row">
+              <div class="code-input-group">
+                <label>Valor da Hora =</label>
+                <input type="number" id="valorHora" value="50" />;
+              </div>
+              <div class="code-input-group">
+                <label>Horas por PF =</label>
+                <input type="number" id="produtividade" value="8" />;
+              </div>
+            </div>
+          </div>
+
+          <div class="scope-box">
+            <div class="comment-block">// Escopo (Funcionalidades)</div>
+
+            <div class="add-form code-style">
+              <div class="code-input-group wide-grow">
+                <label>Descrição da Funcionalidade</label>
+                <input
+                  type="text"
+                  id="descNova"
+                  placeholder='"Tela de Login"'
+                  autocomplete="off"
+                />
+              </div>
+
+              <div class="code-input-group">
+                <label>Tipo</label>
+                <select id="tipoNovo">
+                  <option value="ALI">Tipo ALI</option>
+                  <option value="AIE">Tipo AIE</option>
+                  <option value="EE">Tipo EE</option>
+                  <option value="SE">Tipo SE</option>
+                  <option value="CE">Tipo CE</option>
+                </select>
+              </div>
+
+              <div class="code-input-group">
+                <label>Complexidade</label>
+                <select id="compNova">
+                  <option value="Baixa">Comp. Baixa</option>
+                  <option value="Media">Comp. Media</option>
+                  <option value="Alta">Comp. Alta</option>
+                </select>
+              </div>
+
+              <button id="btnAdicionar" class="compile-btn">
+                <i class="fa-solid fa-play"></i> ADD
+              </button>
+            </div>
+
+            <div class="table-container">
+              <table id="tabela-funcionalidades">
+                <thead>
+                  <tr>
+                    <th>Funcionalidade</th>
+                    <th>Tipo</th>
+                    <th>Comp.</th>
+                    <th>PF</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="lista-items"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <aside class="results-section">
+          <h3>OUTPut_</h3>
+
+          <div class="result-block">
+            <span>TOTAL PF:</span>
+            <strong id="totalPF" class="mono-result">0</strong>
+          </div>
+
+          <div class="result-block">
+            <span>Estimativa de Horas:</span>
+            <strong id="totalHoras" class="mono-result">0h</strong>
+          </div>
+
+          <div class="result-block highlight-block">
+            <span>Orçamento Final</span>
+            <strong id="precoFinal" class="mono-result highlight"
+              >R$ 0,00</strong
+            >
+          </div>
+
+          <button id="btnExportar" class="compile-btn export-btn">
+            <i class="fa-solid fa-file-pdf"></i> > EXPORT_PDF
+          </button>
+
+          <div class="copyright-note">
+            Copyright©. Todos os direitos reservados.
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
